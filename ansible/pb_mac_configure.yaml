@@ -1,0 +1,13 @@
+---
+- hosts: install
+  roles:
+    - utils
+    - homebrew
+    - app_store
+    - npm
+    - python
+    - shell
+    - openshift
+    - vim
+    - ssh
+    - certificates

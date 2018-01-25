@@ -1,0 +1,8 @@
+---
+- name: Install {{ item.name }} desktop app
+  shell: mas install {{ item.id }}
+  args:
+    creates: "/Applications/{{ item.name }}/Contents/Info.plist"
+  with_flattened:
+    - "{{ d_appstore }}"
+    - "{{ appstore }}"

@@ -1,0 +1,9 @@
+---
+- name: Install {{ item.name }} pip package in root python
+  npm:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+    global: true
+  with_flattened:
+    - "{{ d_npm }}"
+    - "{{ npm }}"

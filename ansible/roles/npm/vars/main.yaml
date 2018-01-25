@@ -1,0 +1,3 @@
+d_npm:
+  - name: "livedown"
+    state: "latest"

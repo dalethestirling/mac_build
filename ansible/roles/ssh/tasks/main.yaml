@@ -1,0 +1,16 @@
+---
+- name: Create .ssh directory
+  file: 
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+    mode: 0700
+# TODO: encrypt and deploy
+- name: Deploy SSH keys
+  copy:
+    src: "files/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.ssh/{{ item }}"
+    mode: 0600
+    backup: yes
+  with_items:
+    - id_rsa
+    - id_rsa.pub

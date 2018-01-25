@@ -1,0 +1,44 @@
+# Extend default lists in roles here.
+
+# install of additional homebrew packages as required
+homebrew: []
+
+homebrew_cask:
+  - name: "vlc"
+    state: "present"
+  - name: "arduino"
+    state: "present"
+
+homebrew_tap: []
+
+# Apps to install from app store using the mas cli client
+# Apps can be found using `mas search <term>` 
+#
+# Default entry:
+#  - name: Demo.app
+#    id: <id from mas search>
+#
+# Name should match the `.app` name found in `/Applications`
+appstore: []
+
+# Pip packages to install for either the default python install or
+# a virtualenv environment
+#
+# Default entry:
+#  - name: package_name
+#    state: present|absent|latest|forceinstall
+#    venv: <path to venv> 
+#
+# Only include `venv` param if package is to be installed in virtualenv
+# environment. if package is to be installed in both 2 entrirs are required
+pip:
+  - name: "flask"
+    state: "latest"
+    venv: "~/venv/flask"
+
+# NPM packages can be installed in this map 
+#
+# Default entry:
+#  - name: package_name
+#    state: present|absent|latest|forceinstall
+npm: []

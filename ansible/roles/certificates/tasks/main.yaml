@@ -1,0 +1,12 @@
+---
+- name: Get list of CA root certs local
+  find:
+    paths: "{{ playbook_dir }}/certificates"
+  delegate_to: 127.0.0.1
+  register: local_cert_files
+
+- name:
+  command: "security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain {{ item }}"
+  become: true
+  with_items: "{{ local_cert_files.files }}"
+

@@ -1,0 +1,2 @@
+[install]
+localhost ansible_connection=local

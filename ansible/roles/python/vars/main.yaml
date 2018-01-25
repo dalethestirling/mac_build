@@ -1,0 +1,7 @@
+d_pip:
+  - name: "ansible"
+    state: "present"
+  - name: "psycopg2"
+    state: "present"
+  - name: "virtualenv"
+    state: "present"

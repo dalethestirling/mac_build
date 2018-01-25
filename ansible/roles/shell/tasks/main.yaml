@@ -1,0 +1,37 @@
+---
+- name: Install OhMyZsh
+  shell: bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
+
+- name: Checkout utilities scripts using SVN
+  subversion:
+    repo: https://github.com/gnachman/iterm2-website/trunk/source/utilities
+    dest: "{{ ansible_env.HOME }}/.iterm2"
+- name: Get utilities files for iterm
+  find:
+    paths: "{{ ansible_env.HOME }}/.iterm2"
+  register: iterm_utils_find
+- name: Add aliases to the plugin zsh script
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.iterm2_shell_integration.zsh"
+    line: "alias {{ item.path | basename }}='{{ item.path }}'"
+    insertafter: EOF
+  with_items: " {{ iterm_utils_find.files }}"
+
+- name: Deploy custom .zshrc file
+  template:
+    src: templates/dot_zshrc.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc" 
+    mode: 0755
+    backup: yes
+
+#####      DO NOT ADD BELOW THIS LINE      #####
+- name: Add zsh to as an available shell for use
+  lineinfile:
+    line: /usr/local/bin/zsh
+    path: /etc/shells
+    insertafter: EOF
+  notify:
+    - chsh-user
+  become: true

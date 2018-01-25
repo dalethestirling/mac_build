@@ -1,0 +1,5 @@
+d_appstore:
+  - name: "Slack.app"
+    id: "803453959"
+  - name: Microsoft Remote Desktop.app
+    id: "715768417"
