@@ -1,15 +1,24 @@
 # Extend default lists in roles here.
 
 # install of additional homebrew packages as required
-homebrew: []
+homebrew: 
+  - name: "kubectl"
+    state: "latest"
 
 homebrew_cask:
   - name: "vlc"
     state: "present"
   - name: "arduino"
     state: "present"
+  - name: "fritzing"
+    state: "present"
+  - name: "docker-edge"
+    state: "present"
+  - name: "sketchup"
+    state: "present"
 
-homebrew_tap: []
+homebrew_tap: 
+  - "caskroom/versions"   
 
 # Apps to install from app store using the mas cli client
 # Apps can be found using `mas search <term>` 

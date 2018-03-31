@@ -4,3 +4,7 @@
   args:
     creates: /usr/local/bin/brew
 
+- name: Install Xcode CLT
+  shell: xcode-select --install
+  args:
+    creates: /Library/Developer/CommandLineTools/usr/bin/gcc

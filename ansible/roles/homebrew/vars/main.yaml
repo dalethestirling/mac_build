@@ -42,3 +42,5 @@ d_homebrew:
     state: "present"
   - name: "gpg"
     state: "latest"
+  - name: "mysql"
+    state: "present" 
