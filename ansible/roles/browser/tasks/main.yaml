@@ -1,0 +1,3 @@
+---
+- name: Set firefox to default browser
+  shell: open "/Applications/Firefox.app" --args -setDefaultBrowser
